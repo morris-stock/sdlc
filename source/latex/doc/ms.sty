@@ -1,0 +1,100 @@
+%
+% Copyright (C) 2018  Xiaofeng Wang <wasphin@gmail.com>
+%
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%
+\RequirePackage{etoolbox} % for command AtEndPreamble
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% hyperref setup
+
+\newcommand*\pdftitle{\@title}
+\newcommand*\pdfauthor{\@author}
+\newcommand*\pdfsubject{}
+
+\AtEndPreamble{%
+  \pagenumbering{arabic}
+
+  \RequirePackage[unicode]{hyperref}
+  \hypersetup{
+    bookmarks,
+    bookmarksnumbered,
+    bookmarksopen       = true,
+    bookmarksopenlevel  = 2,
+    bookmarksdepth      = 3, % to show sections, subsections and subsubsections
+    breaklinks,
+    colorlinks,
+    dvipdfm,
+    pdfborder           = 0 0 0,
+    pdfpagemode         = UseOutlines,
+    pdfstartpage        = 1,
+    pdfauthor           = \pdfauthor{},
+    pdftitle            = \pdftitle{},
+    pdfsubject          = \pdfsubject{},
+    linktocpage, % make page number, not text, be link on TOC, LOC and LOT
+    % linkcolor           = blue,
+    % citecolor           = red,
+    % plainpages          = false,
+    pdfstartview        = FitH}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Chinese environment
+
+\RequirePackage{indentfirst}
+\setlength\parindent{2em}
+
+\RequirePackage{%
+  CJKutf8,   % contains CJK.sty
+  CJKfntef,  % contains CJKulem.sty, CJK.sty
+  CJKnumb,   % contains CJK.sty
+  % CJKvert, % vertical
+  % pinyin,  %
+  CJKpunct, CJKspace}
+
+%% 中文字体
+\newcommand{\song}{\CJKfamily{song}} % 宋体
+\newcommand{\hei}{\CJKfamily{hei}}   % 黑体
+\newcommand{\kai}{\CJKfamily{kai}}   % 楷体
+\newcommand{\wbei}{\CJKfamily{wbei}} % 魏碑
+
+%% 中文字号
+\newcommand{\xiaochu}{\fontsize{36pt}{54pt}\selectfont} % 小初, 1.5 倍行距
+\newcommand{\xiaoyi}{\fontsize{24}{36pt}\selectfont}    % 小一, 1.5 倍行距
+\newcommand{\erhao}{\fontsize{22}{33pt}\selectfont}     % 二号, 1.5 倍行
+\newcommand{\xiaoer}{\fontsize{18pt}{27pt}\selectfont}  % 小二, 1.5 倍行距
+\newcommand{\sanhao}{\fontsize{16pt}{24pt}\selectfont}  % 三号, 1.5 倍行距
+\newcommand{\xiaosan}{\fontsize{15pt}{15pt}\selectfont} % 小三, 1 倍行距
+\newcommand{\sihao}{\fontsize{14pt}{21pt}\selectfont}   % 四号, 1.5 倍行距
+\newcommand{\xiaosi}{\fontsize{12pt}{18pt}\selectfont}  % 小四, 1.5 倍行距
+\newcommand{\wuhao}{\fontsize{10pt}{10pt}\selectfont}   % 五号, 1 倍行距
+
+\newcommand*\zhdate{%
+  {\the\year}~年~{\the\month}~月~{\the\day}~日~}
+\@ifundefined{today}{%
+  \newcommand\today\zhdate}{%
+  \renewcommand\today\zhdate}
+
+\newcommand*\zhcontentsname{\centerline{目\qquad录}}
+\@ifundefined{contentsname}{%
+  \newcommand\contentsname\zhcontentsname{}}{%
+  \renewcommand\contentsname\zhcontentsname{}}
+
+\newcommand*\zhslash{\raise.17ex\hbox{~/~}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\frontmatter{\pagenumbering{Roman}}
+\newcommand\mainmatter{\pagenumbering{arabic}}

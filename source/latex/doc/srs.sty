@@ -1,0 +1,88 @@
+%
+% Copyright (C) 2018  Xiaofeng Wang <wasphin@gmail.com>
+%
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%
+\RequirePackage{ms}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% titlepage
+
+\def\srs@label@version{版本}
+\def\srs@label@producer@and@date{编制\zhslash日期}
+\def\srs@label@reviewer@and@date{审核\zhslash日期}
+\def\srs@label@approver@and@date{批准\zhslash日期}
+
+\def\srs@value@version{}
+
+\def\srs@value@producer{}
+\def\srs@value@produce@date{}
+
+\def\srs@value@reviewer{}
+\def\srs@value@review@date{}
+
+\def\srs@value@approver{}
+\def\srs@value@approve@date{}
+
+\def\srs@value@subtitle{软件需求规格说明}
+\newcommand*\srstitle[1]{
+  \def\srs@value@title{#1}
+  \title{\srs@value@subtitle{} -- \srs@value@title}
+}
+\newcommand*\srsversion[1]{
+  \def\srs@value@version{#1}}
+\newcommand*\srsproducer[2]{
+  \def\srs@value@producer{#1}
+  \def\srs@value@produce@date{#2}}
+\newcommand*\srsreviewer[2]{
+  \def\srs@value@reviewer{#1}
+  \def\srs@value@review@date{#2}}
+\newcommand*\srsapprover[2]{
+  \def\srs@value@approver{#1}
+  \def\srs@value@approve@date{#2}}
+
+\newcommand*\aventry[2]{\makebox[5em][s]{#1} ~:~ \makebox[0.5\textwidth][l]{#2}}
+\newcommand*\avventry[3]{\aventry{#1}{\makebox[0.15\textwidth][s]{#2} \zhslash \makebox[0.35\textwidth][l]{#3}}}
+
+\newcommand*\makesrstitle{
+  \clearpage
+  \thispagestyle{empty}
+
+  \begin{center}
+    \null\vfil
+    \vskip \stretch{2}
+    \song \xiaoer {\srs@value@title}
+
+    \hei \xiaoyi \textbf {\srs@value@subtitle}
+    \vskip \stretch{2}
+
+    \wbei \xiaosan {
+      \aventry{\srs@label@version}{\srs@value@version}
+      \vskip \stretch{1}
+      \avventry{\srs@label@producer@and@date}{\srs@value@producer}{\srs@value@produce@date}
+      \vskip \stretch{1}
+      \avventry{\srs@label@reviewer@and@date}{\srs@value@reviewer}{\srs@value@review@date}
+      \vskip \stretch{1}
+      \avventry{\srs@label@approver@and@date}{\srs@value@approver}{\srs@value@approve@date}
+    }
+    \vskip \stretch{2}
+  \end{center}
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% revision history
+\RequirePackage[tablegrid]{vhistory}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
