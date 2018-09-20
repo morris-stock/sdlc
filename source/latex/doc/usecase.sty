@@ -24,20 +24,11 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% use case sheet
-\RequirePackage[framemethod=TikZ]{mdframed}
-\mdfdefinestyle{usecase}{%
-  linecolor=black,
-  outerlinewidth=1pt,
-  roundcorner=4pt,
-  innertopmargin=\baselineskip,
-  innerbottommargin=\baselineskip,
-  innerrightmargin=4pt,
-  innerleftmargin=4pt,
-  backgroundcolor=gray!8!white
-}
+\RequirePackage[most]{tcolorbox}
+\tcbuselibrary{breakable}
 
 \newenvironment{usecase}{%
-  \begin{mdframed}[style=usecase]
+  \begin{tcolorbox}[enhanced jigsaw,breakable]
 }{%
-  \end{mdframed}
+  \end{tcolorbox}
 }
