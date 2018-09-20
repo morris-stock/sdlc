@@ -1,0 +1,43 @@
+%
+% Copyright (C) 2018  Xiaofeng Wang <wasphin@gmail.com>
+%
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% (at your option) any later version.
+%
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+%
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <http://www.gnu.org/licenses/>.
+%
+
+\NeedsTeXFormat{LaTeX2e}[1995/12/01]
+\def\fileversion{0.1}
+\def\filedate{2018/09/03}
+\ProvidesPackage{usecase}[
+  \filedate\space\fileversion
+  Use Case Environment]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% use case sheet
+\RequirePackage[framemethod=TikZ]{mdframed}
+\mdfdefinestyle{usecase}{%
+  linecolor=black,
+  outerlinewidth=1pt,
+  roundcorner=4pt,
+  innertopmargin=\baselineskip,
+  innerbottommargin=\baselineskip,
+  innerrightmargin=4pt,
+  innerleftmargin=4pt,
+  backgroundcolor=gray!8!white
+}
+
+\newenvironment{usecase}{%
+  \begin{mdframed}[style=usecase]
+}{%
+  \end{mdframed}
+}
